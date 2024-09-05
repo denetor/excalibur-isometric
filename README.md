@@ -1,3 +1,14 @@
+# Tactics example
+## Abstract
+This is a sample tactics game where two teams are opposed in a turn-based battle.
+
+The scenery is build with isometric tiles, having an y-axis to place them even on different levels.
+
+The position of the units is free and based on coordinates.
+
+Each unit has some properties like action points, life, the damage inflicted by type and the range of the weapon. 
+
+
 # Excalibur TypeScript & Webpack Starter
 
 This is a barebones [Excalibur](https://excaliburjs.com) game engine starter built using Typescript 4 & Webpack 5. It's a great starting place to jumpstart building your game! This repo is a template and can be used to [create your own repository](https://github.com/excaliburjs/template-ts-webpack/generate) in GitHub.

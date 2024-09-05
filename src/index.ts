@@ -2,6 +2,7 @@ import { Engine, Loader, DisplayMode } from 'excalibur';
 import { LevelOne } from './scenes/level-one/level-one';
 import { Player } from './actors/player/player';
 import { Resources } from './resources';
+import {TestIsometricLevel} from "@/scenes/test-isometric/test-isometric.level";
 
 /**
  * Managed game class
@@ -9,6 +10,7 @@ import { Resources } from './resources';
 class Game extends Engine {
   private player: Player;
   private levelOne: LevelOne;
+  private testIsometricLevel: TestIsometricLevel;
 
   constructor() {
     super({ displayMode: DisplayMode.FitScreen });
@@ -17,11 +19,15 @@ class Game extends Engine {
   public start() {
 
     // Create new scene with a player
-    this.levelOne = new LevelOne();
-    this.player = new Player();
-    this.levelOne.add(this.player);
+    // this.levelOne = new LevelOne();
+    // this.player = new Player();
+    // this.levelOne.add(this.player);
+    // game.add('levelOne', this.levelOne);
 
-    game.add('levelOne', this.levelOne);
+    this.testIsometricLevel = new TestIsometricLevel();
+    game.add('testIsometricLevel', this.testIsometricLevel);
+
+
 
     // Automatically load all default resources
     const loader = new Loader(Object.values(Resources));
@@ -32,5 +38,5 @@ class Game extends Engine {
 
 const game = new Game();
 game.start().then(() => {
-  game.goToScene('levelOne');
+  game.goToScene('testIsometricLevel');
 });
