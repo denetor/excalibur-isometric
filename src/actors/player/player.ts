@@ -5,13 +5,13 @@ export class Player extends Actor {
   constructor() {
     super({
       pos: vec(150, 150),
-      width: 25,
-      height: 25,
+      width: 64,
+      height: 64,
       color: new Color(255, 255, 255)
     });
   }
 
   onInitialize() {
-    this.graphics.use(Resources.Sword.toSprite());
+    this.graphics.use(Resources.ActorWarrior.toSprite());
   }
 }

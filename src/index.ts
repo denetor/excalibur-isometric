@@ -9,7 +9,6 @@ import {TestIsometricLevel} from "@/scenes/test-isometric/test-isometric.level";
  */
 class Game extends Engine {
   private player: Player;
-  private levelOne: LevelOne;
   private testIsometricLevel: TestIsometricLevel;
 
   constructor() {
@@ -17,14 +16,9 @@ class Game extends Engine {
   }
 
   public start() {
-
-    // Create new scene with a player
-    // this.levelOne = new LevelOne();
-    // this.player = new Player();
-    // this.levelOne.add(this.player);
-    // game.add('levelOne', this.levelOne);
-
     this.testIsometricLevel = new TestIsometricLevel();
+    this.player = new Player();
+    this.testIsometricLevel.add(this.player);
     game.add('testIsometricLevel', this.testIsometricLevel);
 
 

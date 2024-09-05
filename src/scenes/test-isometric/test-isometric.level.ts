@@ -6,17 +6,11 @@ import { Resources } from '@/resources';
  */
 export class TestIsometricLevel extends Scene {
     isoMap: IsometricMap;
-    // grassTileImage;
-    // waterTileImage;
     grassTileSprite;
     waterTileSprite;
 
 
     public async onInitialize(engine: Engine) {
-        // this.grassTileImage = new ImageSource('./../../../../images/tile-erba.png');
-        // this.waterTileImage = new ImageSource('./images/tile-acqua.png');
-        // await this.grassTileImage.load(engine);
-        // await this.waterTileImage.load(engine);
         this.grassTileSprite = Resources.GrassTile.toSprite();
         this.waterTileSprite = Resources.WaterTile.toSprite();
         this.isoMap = new IsometricMap({

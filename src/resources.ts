@@ -1,5 +1,6 @@
 import { ImageSource } from 'excalibur';
 import sword from './images/sword.png';
+import actorWarrior from './images/actor-warrior.png';
 import grassTileImage from './images/tile-erba.png';
 import waterTileImage from './images/tile-acqua.png';
 
@@ -9,6 +10,7 @@ import waterTileImage from './images/tile-acqua.png';
  */
 const Resources = {
     Sword: new ImageSource(sword),
+    ActorWarrior: new ImageSource(actorWarrior),
     GrassTile: new ImageSource(grassTileImage),
     WaterTile: new ImageSource(waterTileImage),
 }
