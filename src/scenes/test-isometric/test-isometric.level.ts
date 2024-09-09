@@ -1,4 +1,4 @@
-import { Engine, Scene, ImageSource, IsometricMap, Random, vec } from 'excalibur';
+import { Engine, Scene, IsometricMap, Random, vec } from 'excalibur';
 import { Resources } from '@/resources';
 
 /**
@@ -6,28 +6,31 @@ import { Resources } from '@/resources';
  */
 export class TestIsometricLevel extends Scene {
     isoMap: IsometricMap;
-    grassTileSprite;
-    waterTileSprite;
+    dirtTileSprite;
+    stoneTileSprite;
+    planksTileSprite;
 
 
     public async onInitialize(engine: Engine) {
-        this.grassTileSprite = Resources.GrassTile.toSprite();
-        this.waterTileSprite = Resources.WaterTile.toSprite();
+        this.dirtTileSprite = Resources.DirtTile.toSprite();
+        this.stoneTileSprite = Resources.StoneTile.toSprite();
+        this.planksTileSprite = Resources.PlanksTile.toSprite();
         this.isoMap = new IsometricMap({
             pos: vec(250, 10),
-            tileWidth: 64,
-            tileHeight: 32,
-            columns: 15,
-            rows: 15
+            tileWidth: 128,
+            tileHeight: 64,
+            columns: 10,
+            rows: 10
         });
         this.add(this.isoMap);
 
         const rand = new Random(1234)
         for (let tile of this.isoMap.tiles) {
-            if (rand.bool(0.8)) {
-                tile.addGraphic(this.grassTileSprite);
+            // tile.addGraphic(this.planksTileSprite);
+            if (rand.bool(0.7)) {
+                tile.addGraphic(this.dirtTileSprite);
             } else {
-                tile.addGraphic(this.waterTileSprite);
+                tile.addGraphic(rand.bool(0.5) ? this.stoneTileSprite : this.planksTileSprite);
             }
         }
     }
