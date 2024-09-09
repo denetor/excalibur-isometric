@@ -9,12 +9,14 @@ export class TestIsometricLevel extends Scene {
     dirtTileSprite;
     stoneTileSprite;
     planksTileSprite;
+    waterTileSprite;
 
 
     public async onInitialize(engine: Engine) {
         this.dirtTileSprite = Resources.DirtTile.toSprite();
         this.stoneTileSprite = Resources.StoneTile.toSprite();
         this.planksTileSprite = Resources.PlanksTile.toSprite();
+        this.waterTileSprite = Resources.WaterTile.toSprite();
         this.isoMap = new IsometricMap({
             pos: vec(250, 10),
             tileWidth: 128,
@@ -27,10 +29,13 @@ export class TestIsometricLevel extends Scene {
         const rand = new Random(1234)
         for (let tile of this.isoMap.tiles) {
             // tile.addGraphic(this.planksTileSprite);
-            if (rand.bool(0.7)) {
+            if (rand.bool(0.6)) {
                 tile.addGraphic(this.dirtTileSprite);
             } else {
-                tile.addGraphic(rand.bool(0.5) ? this.stoneTileSprite : this.planksTileSprite);
+                tile.addGraphic(rand.bool(0.33) ?
+                    this.stoneTileSprite :
+                    (rand.bool(0.5) ? this.planksTileSprite : this.waterTileSprite)
+                );
             }
         }
     }

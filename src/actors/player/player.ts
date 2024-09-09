@@ -13,5 +13,8 @@ export class Player extends Actor {
 
   onInitialize() {
     this.graphics.use(Resources.ActorWarrior.toSprite());
+    this.z = 9999;
+    this.vel.x = 20;
+    this.vel.y = 10;
   }
 }
