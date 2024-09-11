@@ -1,4 +1,4 @@
-import { Engine, Scene, IsometricMap, Random, vec } from 'excalibur';
+import {Engine, Scene, IsometricMap, Random, vec, Shape} from 'excalibur';
 import { Resources } from '@/resources';
 
 /**
@@ -29,13 +29,19 @@ export class TestIsometricLevel extends Scene {
         const rand = new Random(1234)
         for (let tile of this.isoMap.tiles) {
             // tile.addGraphic(this.planksTileSprite);
-            if (rand.bool(0.6)) {
-                tile.addGraphic(this.dirtTileSprite);
+            if (rand.bool(0.1)) {
+                // tile with full cell collider
+                tile.addGraphic(this.waterTileSprite);
+                tile.solid = true;
+                tile.addCollider(Shape.Polygon([vec(0, 95), vec(63, -32 + 95), vec(127, 95), vec(63, 32 + 95)]));
             } else {
-                tile.addGraphic(rand.bool(0.33) ?
-                    this.stoneTileSprite :
-                    (rand.bool(0.5) ? this.planksTileSprite : this.waterTileSprite)
-                );
+                if (rand.bool(0.6)) {
+                    tile.addGraphic(this.dirtTileSprite);
+                } else {
+                    tile.addGraphic(rand.bool(0.5) ?
+                        this.stoneTileSprite : this.planksTileSprite
+                    );
+                }
             }
         }
     }

@@ -49,19 +49,19 @@ export class Player extends Actor {
 
   moveRight(): void {
     this.vel.x = Math.min(50, this.vel.x + 10);
-    this.vel.y = Math.min(50, this.vel.y + 10);
+    this.vel.y = Math.min(25, this.vel.y + 5);
   }
   moveLeft(): void {
     this.vel.x = Math.max(-50, this.vel.x - 10);
-    this.vel.y = Math.min(-50, this.vel.y - 10);
+    this.vel.y = Math.max(-25, this.vel.y - 5);
   }
   moveDown(): void {
-    this.vel.x = Math.min(-50, this.vel.x - 10);
-    this.vel.y = Math.min(50, this.vel.x + 10);
+    this.vel.x = Math.max(-50, this.vel.x - 10);
+    this.vel.y = Math.min(25, this.vel.y + 5);
   }
   moveUp(): void {
     this.vel.x = Math.min(50, this.vel.x + 10);
-    this.vel.y = Math.min(-50, this.vel.y - 10);
+    this.vel.y = Math.max(-25, this.vel.y - 5);
   }
 
 
