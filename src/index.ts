@@ -1,7 +1,6 @@
-import { Engine, Loader, DisplayMode } from 'excalibur';
-import { LevelOne } from './scenes/level-one/level-one';
-import { Player } from './actors/player/player';
-import { Resources } from './resources';
+import {DisplayMode, Engine, Loader, PointerScope} from 'excalibur';
+import {Player} from './actors/player/player';
+import {Resources} from './resources';
 import {TestIsometricLevel} from "@/scenes/test-isometric/test-isometric.level";
 
 /**
@@ -12,7 +11,10 @@ class Game extends Engine {
   private testIsometricLevel: TestIsometricLevel;
 
   constructor() {
-    super({ displayMode: DisplayMode.FitScreen });
+    super({
+      displayMode: DisplayMode.FitScreen,
+      pointerScope: PointerScope.Canvas,
+    });
   }
 
   public start() {

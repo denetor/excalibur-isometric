@@ -1,4 +1,4 @@
-import {Engine, Scene, IsometricMap, Random, vec} from 'excalibur';
+import {Engine, Scene, IsometricMap, Random, vec, SceneEvents} from 'excalibur';
 import { terrainSpritesheet, spearmanSpritesheet } from '@/resources';
 
 /**
@@ -9,6 +9,9 @@ export class TestIsometricLevel extends Scene {
 
 
     public async onInitialize(engine: Engine) {
+        //
+        // init map
+        //
         this.isoMap = new IsometricMap({
             pos: vec(250, 10),
             tileWidth: 64,
@@ -35,6 +38,16 @@ export class TestIsometricLevel extends Scene {
                     tile.addGraphic(terrainSpritesheet.getSprite(1,0));
             }
         }
+
+        //
+        // events
+        //
+        let lastMouseEvent = vec(0,0);
+        this.engine.input.pointers.on('down', (evt) => {
+            console.log({evt});
+            lastMouseEvent = this.isoMap.worldToTile(evt.worldPos);
+            console.log(lastMouseEvent);
+        });
     }
     public onActivate() {}
     public onDeactivate() {}
