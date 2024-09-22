@@ -50,7 +50,7 @@ export class TestIsometricLevel extends Scene {
             console.log({evt});
             lastMouseEvent = this.isoMap.worldToTile(evt.worldPos);
             console.log(lastMouseEvent);
-            const alert = new Alert('Ciao mondo', 3000);
+            const alert = new Alert(`Click at cell: ${lastMouseEvent.x},${lastMouseEvent.y}`, 3000);
             engine.currentScene.add(alert);
         });
 
