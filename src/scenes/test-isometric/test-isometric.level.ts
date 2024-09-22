@@ -2,6 +2,7 @@ import {Engine, Scene, IsometricMap, Random, vec, SceneEvents} from 'excalibur';
 import { terrainSpritesheet, spearmanSpritesheet } from '@/resources';
 import {SpearmanUnit} from "@/actors/units/spearman-unit.actor";
 import {Unit} from "@/actors/units/unit";
+import {Alert} from "@/actors/messages/alert";
 
 /**
  * Managed scene
@@ -49,6 +50,8 @@ export class TestIsometricLevel extends Scene {
             console.log({evt});
             lastMouseEvent = this.isoMap.worldToTile(evt.worldPos);
             console.log(lastMouseEvent);
+            const alert = new Alert('Ciao mondo', 3000);
+            engine.currentScene.add(alert);
         });
 
         //
