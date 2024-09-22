@@ -18,13 +18,11 @@ class Game extends Engine {
   }
 
   public start() {
-    this.testIsometricLevel = new TestIsometricLevel();
-    game.add('testIsometricLevel', this.testIsometricLevel);
-    this.player = new Player();
-    this.testIsometricLevel.add(this.player);
-
     // Automatically load all default resources
     const loader = new Loader(Object.values(Resources));
+
+    this.testIsometricLevel = new TestIsometricLevel();
+    game.add('testIsometricLevel', this.testIsometricLevel);
 
     return super.start(loader);
   }
