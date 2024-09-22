@@ -1,6 +1,7 @@
 import {Engine, Scene, IsometricMap, Random, vec, SceneEvents} from 'excalibur';
 import { terrainSpritesheet, spearmanSpritesheet } from '@/resources';
 import {SpearmanUnit} from "@/actors/units/spearman-unit.actor";
+import {Unit} from "@/actors/units/unit";
 
 /**
  * Managed scene
@@ -53,11 +54,26 @@ export class TestIsometricLevel extends Scene {
         //
         // spawn initial units
         //
-        const spearman = new SpearmanUnit();
-        spearman.pos = vec(100,100);
-        spearman.z = 100;
-        engine.currentScene.add(spearman);
-
+        const friends: Unit[] = [];
+        const foes: Unit[] = [];
+        for (let i = 0; i < 4; i++) {
+            const spearman = new SpearmanUnit();
+            spearman.pos = this.isoMap.tileToWorld(vec(3+i, 7));
+            spearman.z = 999;
+            friends.push(spearman);
+        }
+        for (let i = 0; i < 4; i++) {
+            const spearman = new SpearmanUnit();
+            spearman.pos = this.isoMap.tileToWorld(vec(3+i, 2));
+            spearman.z = 999;
+            foes.push(spearman);
+        }
+        for (const friend of friends) {
+            engine.currentScene.add(friend);
+        }
+        for (const foe of foes) {
+            engine.currentScene.add(foe);
+        }
     }
     public onActivate() {}
     public onDeactivate() {}
