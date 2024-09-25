@@ -3,6 +3,7 @@ import { terrainSpritesheet, spearmanSpritesheet } from '@/resources';
 import {SpearmanUnit} from "@/actors/units/spearman-unit.actor";
 import {Unit} from "@/actors/units/unit";
 import {Alert} from "@/actors/messages/alert";
+import {Window} from "@/actors/messages/window";
 
 /**
  * Managed scene
@@ -50,8 +51,11 @@ export class TestIsometricLevel extends Scene {
             console.log({evt});
             lastMouseEvent = this.isoMap.worldToTile(evt.worldPos);
             console.log(lastMouseEvent);
-            const alert = new Alert(`Click at cell: ${lastMouseEvent.x},${lastMouseEvent.y}`, 3000);
-            engine.currentScene.add(alert);
+            // const alert = new Alert(`Click at cell: ${lastMouseEvent.x},${lastMouseEvent.y}`, 3000);
+            // engine.currentScene.add(alert);
+            const window = new Window();
+            window.pos = vec(evt.worldPos.x, evt.worldPos.y);
+            engine.currentScene.add(window);
         });
 
         //
